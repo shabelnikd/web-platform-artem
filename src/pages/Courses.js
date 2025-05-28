@@ -36,7 +36,7 @@ function Courses() {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await axios.get('https://artem.diplomcomtehno.online/admin/api/courses/');
+        const response = await axios.get('https://artem.diplomcomtehno.online/api/courses/');
         setCourses(response.data);
       } catch (error) {
         console.error('Error fetching courses:', error);

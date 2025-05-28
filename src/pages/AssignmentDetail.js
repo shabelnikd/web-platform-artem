@@ -14,7 +14,7 @@ function AssignmentDetail() {
       try {
         const token = localStorage.getItem('token');
         const config = token ? { headers: { Authorization: `Token ${token}` } } : {};
-        const response = await axios.get(`https://artem.diplomcomtehno.online/admin/api/assignments/${assignmentId}/`, config);
+        const response = await axios.get(`https://artem.diplomcomtehno.online/api/assignments/${assignmentId}/`, config);
         setAssignment(response.data);
       } catch (err) {
         setError('Ошибка загрузки задания');

@@ -30,7 +30,7 @@ function Login() {
     setError('');
 
     try {
-      const response = await axios.post('https://artem.diplomcomtehno.online/admin/api/auth/login/', formData);
+      const response = await axios.post('https://artem.diplomcomtehno.online/api/auth/login/', formData);
       // Сохраняем токен в localStorage
       localStorage.setItem('token', response.data.token);
       // Перенаправляем на главную страницу
