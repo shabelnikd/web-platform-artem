@@ -32,7 +32,7 @@ function LessonDetail() {
   useEffect(() => {
     const fetchLesson = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/lessons/${lessonId}/`);
+        const response = await axios.get(`https://artem.diplomcomtehno.online/admin/api/lessons/${lessonId}/`);
         setLesson(response.data);
       } catch (error) {
         console.error('Error fetching lesson:', error);
@@ -49,7 +49,7 @@ function LessonDetail() {
         const token = localStorage.getItem('token');
         if (!token) return;
         const config = { headers: { Authorization: `Token ${token}` } };
-        const response = await axios.get('http://localhost:8000/api/progress/', config);
+        const response = await axios.get('https://artem.diplomcomtehno.online/admin/api/progress/', config);
         // Найти progress для текущего курса
         const progress = response.data.find((p) => String(p.course.id) === String(courseId));
         if (progress) setProgressId(progress.id);
@@ -68,12 +68,12 @@ function LessonDetail() {
       setCreatingProgress(true);
       if (!pid) {
         // Создать прогресс по курсу
-        const createResp = await axios.post('http://localhost:8000/api/progress/', { course_id: Number(courseId) }, config);
+        const createResp = await axios.post('https://artem.diplomcomtehno.online/admin/api/progress/', { course_id: Number(courseId) }, config);
         pid = createResp.data.id;
         setProgressId(pid);
       }
       // Отметить урок как пройденный
-      await axios.post(`http://localhost:8000/api/progress/${pid}/complete_lesson/`, { lesson_id: lessonId }, config);
+      await axios.post(`https://artem.diplomcomtehno.online/admin/api/progress/${pid}/complete_lesson/`, { lesson_id: lessonId }, config);
       setSnackbarMsg('Урок отмечен как пройденный!');
       setSnackbarOpen(true);
     } catch (error) {

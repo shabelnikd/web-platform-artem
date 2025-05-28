@@ -49,8 +49,8 @@ function Profile() {
         }
         const config = { headers: { Authorization: `Token ${token}` } };
         const [userResponse, progressResponse] = await Promise.all([
-          axios.get('http://localhost:8000/api/auth/user/', config),
-          axios.get('http://localhost:8000/api/progress/', config),
+          axios.get('https://artem.diplomcomtehno.online/admin/api/auth/user/', config),
+          axios.get('https://artem.diplomcomtehno.online/admin/api/progress/', config),
         ]);
         setUserData(userResponse.data);
         setProgress(progressResponse.data || []);

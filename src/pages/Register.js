@@ -39,7 +39,7 @@ function Register() {
     }
 
     try {
-      const response = await axios.post('http://localhost:8000/api/auth/register/', {
+      const response = await axios.post('https://artem.diplomcomtehno.online/admin/api/auth/register/', {
         username: formData.username,
         email: formData.email,
         password: formData.password,
@@ -48,7 +48,7 @@ function Register() {
       });
       
       // Автоматически входим после регистрации
-      const loginResponse = await axios.post('http://localhost:8000/api/auth/login/', {
+      const loginResponse = await axios.post('https://artem.diplomcomtehno.online/admin/api/auth/login/', {
         username: formData.username,
         password: formData.password,
       });
